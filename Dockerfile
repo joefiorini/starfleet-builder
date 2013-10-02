@@ -9,7 +9,7 @@ RUN reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 RUN pacman -Syy
 
 RUN pacman -S --noconfirm zsh
-RUN pacman -S --noconfirm vim tmux ack
+RUN pacman -S --noconfirm vim tmux ack fortune-mod
 RUN pacman -S --noconfirm tcpdump netcat
 RUN useradd -mG wheel -s /bin/zsh dev
 RUN usermod -aG tty dev
