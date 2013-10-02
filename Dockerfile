@@ -9,7 +9,8 @@ RUN reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 RUN pacman -Syy
 
 RUN pacman -S --noconfirm zsh
-RUN pacman -S --noconfirm vim
+RUN pacman -S --noconfirm vim tmux ack
+RUN pacman -S --noconfirm tcpdump netcat
 RUN useradd -mG wheel -s /bin/zsh dev
 RUN usermod -aG tty dev
 RUN echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
@@ -34,6 +35,7 @@ RUN touch /var/log/sshd.log
 
 ADD .zshrc /home/dev/.zshrc
 ADD .zcompdump /home/dev/.zcompdump
+ADD .tmux.conf /home/dev/.tmux.conf
 RUN chown dev /home/dev/.z*
 RUN chgrp dev /home/dev/.z*
 
