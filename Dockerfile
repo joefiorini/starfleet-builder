@@ -39,7 +39,7 @@ RUN chown -R dev /home/dev
 RUN chgrp -R dev /home/dev
 
 
-EXPOSE 22 60000/udp
+EXPOSE 22
 
 ENTRYPOINT ["/usr/bin/sshd"]
 
