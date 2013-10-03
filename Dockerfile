@@ -33,11 +33,11 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 
 RUN touch /var/log/sshd.log
 
-ADD .zshrc /home/dev/.zshrc
-ADD .zcompdump /home/dev/.zcompdump
-ADD .tmux.conf /home/dev/.tmux.conf
-RUN chown dev /home/dev/.z*
-RUN chgrp dev /home/dev/.z*
+ADD http://configs.static.triforce.io/configs-0.0.1.tar.gz /configs.tar.gz
+RUN tar -xvzf /configs.tar.gz
+RUN chown -R dev /home/dev
+RUN chgrp -R dev /home/dev
+
 
 EXPOSE 22 60000/udp
 
