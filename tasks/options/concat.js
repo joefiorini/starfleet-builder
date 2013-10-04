@@ -7,7 +7,7 @@ module.exports = {
   },
   main: {
     files: {
-      'Dockerfile': ['tmp/preface.docker', 'tmp/main.docker', 'tmp/epilogue.docker']
+      'builds/Dockerfile.<%= dockerfileExt %>': ['tmp/preface.docker', 'tmp/main.docker', 'tmp/epilogue.docker']
     }
   },
   images: {
