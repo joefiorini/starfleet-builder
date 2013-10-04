@@ -1,0 +1,6 @@
+{
+  "base": "triforce/arch-base",
+  "python": {
+    "version": "3.3.2-2"
+  }
+}

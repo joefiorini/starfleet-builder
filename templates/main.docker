@@ -1,0 +1,3 @@
+<%= grunt.file.readIf('tmp/images/ruby.docker', buildConfig.ruby) %>
+<%= grunt.file.readIf('tmp/images/python.docker', buildConfig.python) %>
+<%= grunt.file.readIf('tmp/images/node.docker', buildConfig.node) %>

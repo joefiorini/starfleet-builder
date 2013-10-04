@@ -1,0 +1,9 @@
+FROM <%= buildConfig.base %>
+MAINTAINER <%= pkg.author %>
+
+RUN cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+RUN cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+RUN sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist
+RUN pacman -S --noconfirm reflector
+RUN reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
+RUN pacman -Syy

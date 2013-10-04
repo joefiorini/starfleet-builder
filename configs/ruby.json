@@ -1,0 +1,7 @@
+{
+  "base": "triforce/arch-base",
+  "ruby": {
+    "version": ">=2.0.0_p247-3",
+    "includeBundler": false
+  }
+}

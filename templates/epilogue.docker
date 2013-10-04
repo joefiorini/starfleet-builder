@@ -1,0 +1,6 @@
+EXPOSE 22
+
+ENTRYPOINT ["/usr/bin/sshd"]
+
+CMD ["-D"]
+
