@@ -1,1 +1,1 @@
-RUN pacman -S nodejs <%= buildConfig.node.version %>
+RUN pacman -S --noconfirm "nodejs<%= buildConfig.node.version %>"

@@ -1,1 +1,7 @@
-RUN pacman -S ruby <%= buildConfig.ruby.version %>
+RUN pacman -S --noconfirm "ruby<%= buildConfig.ruby.version %>"
+
+ADD http://configs.static.triforce.io/configs-ruby-0.0.1.tar.gz /configs-ruby.tar.gz
+RUN tar -xvzf /configs-ruby.tar.gz
+RUN chown -R dev /home/dev
+RUN chgrp -R dev /home/dev
+
