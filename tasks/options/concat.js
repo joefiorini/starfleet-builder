@@ -1,29 +1,28 @@
 var grunt = require('grunt'),
     path = require('path');
 
-module.exports = {
-  options: {
-    process: true
-  },
-  main: {
-    files: {
-      'builds/Dockerfile.<%= dockerfileExt %>': ['tmp/preface.docker', 'tmp/main.docker', 'tmp/epilogue.docker']
-    }
-  },
-  images: {
+function image(name) {
+  return {
     options: {
       process: function(src, filepath) {
-        var images = grunt.util._.keys(grunt.config('buildConfig'));
-        if(images.indexOf(path.basename(filepath, '.docker')) > 0) {
-          return grunt.template.process(src);
-        } else {
-          return null;
-        }
+        var config = grunt.file.readJSON('configs/' + name + '.json');
+        var data = { buildConfig: config, pkg: grunt.config('pkg') };
+        return grunt.template.process(src, {data: data});
       }
     },
-    expand: true,
-    cwd: 'images',
-    src: ['*.docker'],
-    dest: 'tmp/images/'
-  }
+    files: [{
+      expand: true,
+      cwd: 'tmp/stage/',
+      src: ['preface.docker', 'main.docker', 'epilogue.docker'],
+      dest: 'tmp/built/',
+      rename: function(dest, src) {
+        return path.join(dest, 'Dockerfile.' + name);
+      }
+    }]
+  };
+}
+
+module.exports = {
+  ruby: image("ruby"),
+  "ruby-web": image("ruby-web")
 };

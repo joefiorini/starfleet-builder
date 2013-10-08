@@ -13,6 +13,6 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 
 RUN sed -i 's/^dev:\!:/:x:/' /etc/shadow && sed -i 's/# \(%wheel ALL=(ALL) NOPASSWD: ALL\)/\1/' /etc/sudoers
 
-<%= grunt.file.readIf('tmp/images/ruby.docker', buildConfig.ruby) %>
-<%= grunt.file.readIf('tmp/images/python.docker', buildConfig.python) %>
-<%= grunt.file.readIf('tmp/images/node.docker', buildConfig.node) %>
+<%= grunt.file.readIf('images/ruby.docker', buildConfig.ruby) %>
+<%= grunt.file.readIf('images/python.docker', buildConfig.python) %>
+<%= grunt.file.readIf('images/node.docker', buildConfig.node) %>

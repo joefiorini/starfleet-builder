@@ -21,10 +21,10 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    buildConfig: grunt.file.readJSON(configFileName()),
-    dockerfileExt: path.basename(configFileName(), ".json"),
+    aws: grunt.file.readJSON(process.env.HOME + '/grunt-aws.json'),
     copy: loadConfig('copy'),
-    concat: loadConfig('concat')
+    concat: loadConfig('concat'),
+    s3: loadConfig('s3')
   });
 
   grunt.registerTask('printOpts', 'print options', function() {
@@ -33,6 +33,7 @@ module.exports = function(grunt) {
     grunt.log.verbose.writeln('Options read from: ', grunt.config('configFile'));
   });
 
-  grunt.registerTask('dockerfile:generate', ['printOpts', 'copy:stage', 'concat:images', 'concat:main']);
+  grunt.registerTask('dockerfile:generate', ['copy:stage', 'concat', 'copy:finalize']);
+  grunt.registerTask('dockerfile:deploy', ['copy:stage', 'concat', 'copy:finalize', 's3:master']);
 
 };
