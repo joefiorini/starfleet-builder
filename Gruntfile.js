@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     grunt.log.verbose.writeln('Options read from: ', grunt.config('configFile'));
   });
 
-  grunt.registerTask('dockerfile:generate', ['copy:stage', 'concat', 'copy:finalize']);
-  grunt.registerTask('dockerfile:deploy', ['copy:stage', 'concat', 'copy:finalize', 's3:master']);
+  grunt.registerTask('dockerfile:generate', 'Generate dockerfiles from configs', ['copy:stage', 'concat', 'copy:finalize']);
+  grunt.registerTask('dockerfile:deploy', 'Generate and deploy dockerfiles', ['copy:stage', 'concat', 'copy:finalize', 's3:master']);
 
 };
