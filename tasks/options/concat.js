@@ -25,5 +25,6 @@ function image(name) {
 module.exports = {
   ruby: image("ruby"),
   "ruby-web": image("ruby-web"),
-  node: image("node")
+  node: image("node"),
+  go: image("go")
 };

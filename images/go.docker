@@ -1,0 +1,5 @@
+RUN pacman -S --noconfirm "go<%= buildConfig.go.version %>"
+
+ADD http://configs.static.triforce.io/configs-go-0.0.1.tar.gz /configs-go.tar.gz
+RUN tar -xvzf /configs-go.tar.gz && chown -R dev /home/dev && chgrp -R dev /home/dev
+RUN mkdir /home/dev/workspace && chown -R dev:dev /home/dev/workspace

@@ -16,3 +16,4 @@ RUN sed -i 's/^dev:\!:/:x:/' /etc/shadow && sed -i 's/# \(%wheel ALL=(ALL) NOPAS
 <%= grunt.file.readIf('images/ruby.docker', buildConfig.ruby) %>
 <%= grunt.file.readIf('images/python.docker', buildConfig.python) %>
 <%= grunt.file.readIf('images/node.docker', buildConfig.node) %>
+<%= grunt.file.readIf('images/go.docker', buildConfig.go) %>
