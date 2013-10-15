@@ -1,0 +1,7 @@
+{
+  "base": "schmidh/arch-base",
+  "node": {
+    "version": ">=0.10.20"
+  }
+}
+
