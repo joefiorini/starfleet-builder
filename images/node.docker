@@ -1,1 +1,2 @@
 RUN pacman -S --noconfirm "nodejs<%= buildConfig.node.version %>"
+RUN npm install -g grunt-cli bower
